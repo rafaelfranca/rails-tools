@@ -1,0 +1,47 @@
+#!/usr/bin/env ruby
+require 'bundler'
+Bundler.setup
+
+require 'octokit'
+require 'active_support'
+require 'active_support/core_ext/date/calculations'
+require 'active_support/core_ext/numeric/time'
+
+REPOSITORIES = %w(spree/spree)
+
+client = Octokit::Client.new(:netrc => true)
+
+version = ARGV[0]
+
+fail ArgumentError, 'Missing release version' unless version
+
+possible_release_date = 3.days.from_now
+
+if possible_release_date.saturday? || possible_release_date.sunday?
+  possible_release_date = possible_release_date.sunday + 1.day
+end
+
+message = <<MESSAGE
+Hi team,
+
+we just released Rails #{version}. To help us to find regression, and make the final release
+an awesome release for everyone, I'm here humbly asking you to test your project with this
+Release Candidate.
+
+We are planing the final release to #{possible_release_date.to_date}, so it would be great if you test it before
+this date.
+
+If you find any regression please open an issue on GitHub mentioning me and with the title starting
+with:
+
+`[Regression #{version}]`
+
+Thanks in advance.
+MESSAGE
+
+puts "Sending message:\n\n#{message}\n"
+REPOSITORIES.each do |repository|
+  print "To: #{repository}... "
+  client.create_issue(repository, "Test this project with Rails #{version}", message)
+  puts 'Done'
+end
