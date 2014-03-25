@@ -12,10 +12,11 @@ REPOSITORIES = %w(spree/spree plataformatec/devise plataformatec/simple_form cha
 client = Octokit::Client.new(:netrc => true)
 
 version = ARGV[0]
+days    = (ARGV[1] || 3).to_i
 
 fail ArgumentError, 'Missing release version' unless version
 
-possible_release_date = 3.days.from_now
+possible_release_date = days.days.from_now
 
 if possible_release_date.saturday? || possible_release_date.sunday?
   possible_release_date = possible_release_date.sunday + 1.day
