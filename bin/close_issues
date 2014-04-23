@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+require 'bundler'
+Bundler.setup
+
+require 'octokit'
+require 'active_support'
+require 'active_support/core_ext/date/calculations'
+require 'active_support/core_ext/integer/time'
+
+client = Octokit::Client.new(:netrc => true)
+
+client.auto_paginate = true
+issues = client.issues 'rails/rails', state: :open, sort: :updated, direction: :asc
+old_issues = issues.select do |issue|
+  (issue.updated_at < 3.months.ago) && !issue.pull_request.rels[:self]
+end
+
+old_issues.each do |issue|
+  client.add_labels_to_an_issue('rails/rails', issue.number, ['stale'])
+end
