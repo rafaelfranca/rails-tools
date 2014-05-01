@@ -11,10 +11,23 @@ client = Octokit::Client.new(:netrc => true)
 
 client.auto_paginate = true
 issues = client.issues 'rails/rails', state: :open, sort: :updated, direction: :asc
-old_issues = issues.select do |issue|
-  (issue.updated_at < 3.months.ago) && !issue.pull_request.rels[:self]
+stale_issues = issues.select do |issue|
+  !issue.pull_request.rels[:self] && issue.labels.detect { |label| label.name == 'stale' }
 end
 
-old_issues.each do |issue|
-  client.add_labels_to_an_issue('rails/rails', issue.number, ['stale'])
+message = <<-BODY
+This issue has been automatically closed because of inactivity.
+
+If you can still reproduce this error on the `4-1-stable`, `4-0-stable` branches or on `master`,
+please reply with all of the information you have about it in order to keep the issue open.
+
+Thank you for all your contributions.
+BODY
+
+stale_issues.each do |issue|
+  number = issue.number
+
+  p "Closing issue ##{number}"
+  client.close_issue('rails/rails', number)
+  client.add_comment('rails/rails', number, message)
 end
