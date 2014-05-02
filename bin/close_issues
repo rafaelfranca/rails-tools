@@ -7,7 +7,7 @@ require 'active_support'
 require 'active_support/core_ext/date/calculations'
 require 'active_support/core_ext/integer/time'
 
-client = Octokit::Client.new(:netrc => true)
+client = Octokit::Client.new(:netrc => true, :netrc_file => '.netrc')
 
 client.auto_paginate = true
 issues = client.issues 'rails/rails', state: :open, sort: :updated, direction: :asc
