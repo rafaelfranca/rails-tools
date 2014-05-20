@@ -7,6 +7,8 @@ require 'active_support'
 require 'active_support/core_ext/date/calculations'
 require 'active_support/core_ext/integer/time'
 
+force = ARGV[0]
+
 client = Octokit::Client.new(:netrc => true, :netrc_file => '.netrc')
 
 client.auto_paginate = true
@@ -31,6 +33,9 @@ old_issues.each do |issue|
   number = issue.number
 
   p "Marking issue ##{number} as stale"
-  client.add_labels_to_an_issue('rails/rails', number, ['stale'])
-  client.add_comment('rails/rails', number, message)
+
+  if force
+    client.add_labels_to_an_issue('rails/rails', number, ['stale'])
+    client.add_comment('rails/rails', number, message)
+  end
 end

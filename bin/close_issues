@@ -7,6 +7,8 @@ require 'active_support'
 require 'active_support/core_ext/date/calculations'
 require 'active_support/core_ext/integer/time'
 
+force = ARGV[0]
+
 client = Octokit::Client.new(:netrc => true, :netrc_file => '.netrc')
 
 client.auto_paginate = true
@@ -28,6 +30,9 @@ stale_issues.each do |issue|
   number = issue.number
 
   p "Closing issue ##{number}"
-  client.close_issue('rails/rails', number)
-  client.add_comment('rails/rails', number, message)
+
+  if force
+    client.close_issue('rails/rails', number)
+    client.add_comment('rails/rails', number, message)
+  end
 end
