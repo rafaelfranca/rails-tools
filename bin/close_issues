@@ -12,7 +12,7 @@ client = Octokit::Client.new(:netrc => true, :netrc_file => '.netrc')
 client.auto_paginate = true
 issues = client.issues 'rails/rails', state: :open, sort: :updated, direction: :asc
 stale_issues = issues.select do |issue|
-  !issue.pull_request.rels[:self] && issue.labels.detect { |label| label.name == 'stale' }
+  issue.labels.detect { |label| label.name == 'stale' }
 end
 
 message = <<-BODY
