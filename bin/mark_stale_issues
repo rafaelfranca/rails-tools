@@ -14,7 +14,7 @@ client = Octokit::Client.new(:netrc => true, :netrc_file => '.netrc')
 client.auto_paginate = true
 issues = client.issues 'rails/rails', state: :open, sort: :updated, direction: :asc
 old_issues = issues.select do |issue|
-  (issue.updated_at < 3.months.ago) && !issue.pull_request.rels[:self] && issue.milestone
+  (issue.updated_at < 3.months.ago) && !issue.pull_request.rels[:self] && !issue.milestone
 end
 
 message = <<-BODY
