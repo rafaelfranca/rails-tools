@@ -26,10 +26,13 @@ please reply with all of the information you have about it in order to keep the 
 Thank you for all your contributions.
 BODY
 
+puts "Closing #{stale_issues.size} issues."
+puts
+
 stale_issues.each do |issue|
   number = issue.number
 
-  p "Closing issue ##{number}"
+  puts "Closing issue ##{number}. https://github.com/rails/rails/issues/#{number}"
 
   if force
     client.close_issue('rails/rails', number)
