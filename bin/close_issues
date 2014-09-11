@@ -26,8 +26,7 @@ please reply with all of the information you have about it in order to keep the 
 Thank you for all your contributions.
 BODY
 
-puts "Closing #{stale_issues.size} issues."
-puts
+puts "Closing #{stale_issues.size} issues.\n"
 
 stale_issues.each do |issue|
   number = issue.number
