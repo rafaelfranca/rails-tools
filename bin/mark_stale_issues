@@ -10,6 +10,8 @@ require 'active_support/core_ext/integer/time'
 PROTECTED_ISSUES = [
     16731 #Rails is great! Thank you.
 ]
+PINNED_LABELS = ['attached PR', 'regression', 'security']
+
 force = ARGV[0]
 
 client = Octokit::Client.new(:netrc => true, :netrc_file => '.netrc')
@@ -17,9 +19,11 @@ client = Octokit::Client.new(:netrc => true, :netrc_file => '.netrc')
 client.auto_paginate = true
 issues = client.issues 'rails/rails', state: :open, sort: :updated, direction: :asc
 old_issues = issues.select do |issue|
+  not_pinned = (issue.labels.map(&:name) & PINNED_LABELS).empty?
+
   !PROTECTED_ISSUES.include?(issue.id) &&
       (issue.updated_at < 3.months.ago) &&
-      !issue.pull_request.rels[:self]
+      !issue.pull_request.rels[:self] && not_pinned
 end
 
 message = <<-BODY
