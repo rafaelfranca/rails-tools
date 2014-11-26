@@ -10,7 +10,7 @@ require 'active_support/core_ext/integer/time'
 PROTECTED_ISSUES = [
     16731 #Rails is great! Thank you.
 ]
-PINNED_LABELS = ['attached PR', 'regression', 'security', 'pinned']
+PINNED_LABELS = ['With reproduction steps', 'attached PR', 'regression', 'security', 'pinned']
 
 force = ARGV[0]
 
