@@ -10,7 +10,7 @@ require 'active_support/core_ext/integer/time'
 MESSAGE = <<-BODY
 This issue has been automatically closed because of inactivity.
 
-If you can still reproduce this error on the `4-1-stable`, `4-0-stable` branches or on `master`,
+If you can still reproduce this error on the `4-2-stable`, `4-1-stable` branches or on `master`,
 please reply with all of the information you have about it in order to keep the issue open.
 
 Thank you for all your contributions.
