@@ -23,7 +23,7 @@ old_issues = issues.select do |issue|
 
   !PROTECTED_ISSUES.include?(issue.id) &&
       (issue.updated_at < 3.months.ago) &&
-      !issue.pull_request.rels[:self] && not_pinned
+      !issue.pull_request && not_pinned
 end
 
 message = <<-BODY
