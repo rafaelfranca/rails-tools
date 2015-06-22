@@ -31,3 +31,6 @@ DEPENDENCIES
   activesupport
   netrc
   octokit
+
+BUNDLED WITH
+   1.10.1
