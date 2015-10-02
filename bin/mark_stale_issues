@@ -7,9 +7,6 @@ require 'active_support'
 require 'active_support/core_ext/date/calculations'
 require 'active_support/core_ext/integer/time'
 
-PROTECTED_ISSUES = [
-    16731 #Rails is great! Thank you.
-]
 PINNED_LABELS = ['With reproduction steps', 'attached PR', 'regression', 'security', 'pinned']
 
 force = ARGV[0]
@@ -21,8 +18,7 @@ issues = client.issues 'rails/rails', state: :open, sort: :updated, direction: :
 old_issues = issues.select do |issue|
   not_pinned = (issue.labels.map(&:name) & PINNED_LABELS).empty?
 
-  !PROTECTED_ISSUES.include?(issue.id) &&
-      (issue.updated_at < 3.months.ago) &&
+  (issue.updated_at < 3.months.ago) &&
       !issue.pull_request && not_pinned
 end
 
