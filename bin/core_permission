@@ -1,0 +1,55 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
+require 'thor'
+
+class CorePermission < Thor
+  include Thor::Actions
+
+  GEMS = %w(
+    activesupport
+    activemodel
+    activerecord
+    actionview
+    actionpack
+    activejob
+    actionmailer
+    actioncable
+    railties
+    rails
+    sprockets
+    execjs
+    sprockets-rails
+    sass-rails
+    coffee-rails
+    jquery-rails
+    arel
+    globalid
+    rails-html-sanitizer
+    rails-dom-testing
+    coffee-script
+    activeresource
+    turbolinks
+    rails-deprecated_sanitizer
+    activerecord-deprecated_finders
+    spring
+    web-console
+    protected_attributes
+    actionpack-action_caching
+    prototype-rails
+    activerecord-session_store
+    actionpack-page_caching
+    actionpack-xml_parser
+    rails-perftest
+    activesupport-json_encoder
+    record_tag_helper
+  )
+
+  desc "add EMAIL", "Add an user to all Rails gems"
+  def add(email)
+    GEMS.each do |gem|
+      run("gem owner --add #{email} #{gem}")
+    end
+  end
+end
+
+CorePermission.start
