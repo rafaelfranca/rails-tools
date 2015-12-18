@@ -51,6 +51,14 @@ class CorePermission < Thor
       run("gem owner --add #{email} #{gem}")
     end
   end
+
+  desc "remove EMAIL", "Remove an user to all Rails gems"
+  method_option :gems, type: :array, desc: "The gems that you want to remove permission", default: GEMS
+  def remove(email)
+    options[:gems].each do |gem|
+      run("gem owner --remove #{email} #{gem}")
+    end
+  end
 end
 
 CorePermission.start
