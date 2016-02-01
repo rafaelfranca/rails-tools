@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'bundler/setup'
 require 'thor'
+require 'yaml'
 
 class CorePermission < Thor
   include Thor::Actions
@@ -58,6 +59,14 @@ class CorePermission < Thor
   def remove(email)
     options[:gems].each do |gem|
       run("gem owner --remove #{email} #{gem}")
+    end
+  end
+
+  desc "add_gem GEM", "Add a gem to Rails Core"
+  def add_gem(gem)
+    emails = YAML.load(File.read(File.expand_path('../config/emails.yml', __dir__)))['core']
+    emails.each do |email|
+      run("gem owner --add #{email} #{gem}")
     end
   end
 end
