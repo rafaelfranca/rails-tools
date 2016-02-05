@@ -44,6 +44,7 @@ class CorePermission < Thor
     activesupport-json_encoder
     record_tag_helper
     rails-controller-testing
+    activemodel-serializers-xml
   )
 
   desc "add EMAIL", "Add an user to all Rails gems"
