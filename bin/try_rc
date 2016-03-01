@@ -7,7 +7,8 @@ require 'active_support'
 require 'active_support/core_ext/date/calculations'
 require 'active_support/core_ext/numeric/time'
 
-REPOSITORIES = %w(solidusio/solidus plataformatec/devise codetriage/codetriage ManageIQ/manageiq rubygems/rubygems.org)
+USING_RAILS_5 = %w(codetriage/codetriage ManageIQ/manageiq)
+REPOSITORIES = %w(solidusio/solidus plataformatec/devise rubygems/rubygems.org)
 
 client = Octokit::Client.new(:netrc => true)
 
