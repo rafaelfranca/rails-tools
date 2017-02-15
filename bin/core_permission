@@ -46,6 +46,7 @@ class CorePermission < Thor
     rails-controller-testing
     activemodel-serializers-xml
     webpacker
+    rails-ujs
   )
 
   desc "add EMAIL", "Add an user to all Rails gems"
