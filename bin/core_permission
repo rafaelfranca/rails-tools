@@ -47,6 +47,7 @@ class CorePermission < Thor
     activemodel-serializers-xml
     webpacker
     rails-ujs
+    jbuilder
   )
 
   desc "add EMAIL", "Add an user to all Rails gems"
