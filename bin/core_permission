@@ -7,47 +7,48 @@ class CorePermission < Thor
   include Thor::Actions
 
   GEMS = %w(
-    activesupport
-    activemodel
-    activerecord
-    actionview
-    actionpack
-    activejob
-    actionmailer
     actioncable
-    railties
-    rails
-    sprockets
-    execjs
-    sprockets-rails
-    sass-rails
-    coffee-rails
-    jquery-rails
-    arel
-    globalid
-    rails-html-sanitizer
-    rails-dom-testing
-    coffee-script
-    activeresource
-    turbolinks
-    rails-deprecated_sanitizer
-    activerecord-deprecated_finders
-    spring
-    web-console
-    protected_attributes
+    actionmailer
+    actionpack
     actionpack-action_caching
-    prototype-rails
-    activerecord-session_store
     actionpack-page_caching
     actionpack-xml_parser
-    rails-perftest
-    activesupport-json_encoder
-    record_tag_helper
-    rails-controller-testing
+    actionview
+    activejob
+    activemodel
     activemodel-serializers-xml
-    webpacker
-    rails-ujs
+    activerecord
+    activerecord-deprecated_finders
+    activerecord-session_store
+    activeresource
+    activesupport
+    activesupport-json_encoder
+    arel
+    coffee-rails
+    coffee-script
+    execjs
+    globalid
     jbuilder
+    jquery-rails
+    protected_attributes
+    prototype-rails
+    rails
+    rails-controller-testing
+    rails-deprecated_sanitizer
+    rails-dom-testing
+    rails-html-sanitizer
+    rails-observers
+    rails-perftest
+    rails-ujs
+    railties
+    record_tag_helper
+    sass-rails
+    spring
+    sprockets
+    sprockets-rails
+    turbolinks
+    web-console
+    webpacker
   )
 
   desc "add EMAIL", "Add an user to all Rails gems"
