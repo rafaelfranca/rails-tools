@@ -21,6 +21,7 @@ class CorePermission < Thor
     activerecord-deprecated_finders
     activerecord-session_store
     activeresource
+    activestorage
     activesupport
     activesupport-json_encoder
     arel
