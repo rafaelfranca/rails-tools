@@ -8,11 +8,13 @@ class CorePermission < Thor
 
   GEMS = %w(
     actioncable
+    actionmailbox
     actionmailer
     actionpack
     actionpack-action_caching
     actionpack-page_caching
     actionpack-xml_parser
+    actiontext
     actionview
     activejob
     activemodel
