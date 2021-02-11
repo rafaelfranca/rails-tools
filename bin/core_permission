@@ -33,6 +33,7 @@ class CorePermission < Thor
     globalid
     jbuilder
     jquery-rails
+    kredis
     protected_attributes
     prototype-rails
     rails
