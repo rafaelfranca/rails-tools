@@ -57,6 +57,7 @@ class CorePermission < Thor
     cssbundling-rails
     importmap-rails
     tailwindcss-rails
+    marcel
   )
   # propshaft missing
 
