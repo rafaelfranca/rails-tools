@@ -59,8 +59,8 @@ class CorePermission < Thor
     tailwindcss-rails
     marcel
     thor
+    propshaft
   )
-  # propshaft missing
 
   desc "add EMAIL", "Add an user to all Rails gems"
   method_option :gems, type: :array, desc: "The gems that you want to give permission", default: GEMS
