@@ -29,6 +29,7 @@ class CorePermission < Thor
     arel
     coffee-rails
     coffee-script
+    coffee-script-source
     execjs
     globalid
     jbuilder
