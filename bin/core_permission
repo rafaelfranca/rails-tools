@@ -27,14 +27,20 @@ class CorePermission < Thor
     activesupport
     activesupport-json_encoder
     arel
+    bootsnap
     coffee-rails
     coffee-script
     coffee-script-source
+    cssbundling-rails
     execjs
     globalid
+    importmap-rails
     jbuilder
     jquery-rails
+    jsbundling-rails
     kredis
+    marcel
+    propshaft
     protected_attributes
     prototype-rails
     rails
@@ -51,16 +57,11 @@ class CorePermission < Thor
     spring
     sprockets
     sprockets-rails
+    tailwindcss-rails
+    thor
     turbolinks
     web-console
     webpacker
-    jsbundling-rails
-    cssbundling-rails
-    importmap-rails
-    tailwindcss-rails
-    marcel
-    thor
-    propshaft
   )
 
   desc "add EMAIL", "Add an user to all Rails gems"
