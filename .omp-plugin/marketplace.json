@@ -1,0 +1,17 @@
+{
+  "name": "rails-tools",
+  "owner": {
+    "name": "Rafael Mendonça França"
+  },
+  "metadata": {
+    "description": "Rails development tools for Oh My Pi"
+  },
+  "plugins": [
+    {
+      "name": "rails-changelog-review",
+      "description": "Review Rails branch changelogs for missing entries.",
+      "category": "development",
+      "source": "./plugins/rails-changelog-review"
+    }
+  ]
+}
