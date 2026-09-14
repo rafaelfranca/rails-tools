@@ -9,7 +9,7 @@ A set of tools that I use in my day by day Rails development
 Install the skill with Oh My Pi.
 
 ```bash
-SHOPIFY_PI_ALLOW_3P=1 omp plugin marketplace add rafaelfranca/rails-tools
+omp plugin marketplace add rafaelfranca/rails-tools
 omp plugin install rails-changelog-review@rails-tools
 ```
 
