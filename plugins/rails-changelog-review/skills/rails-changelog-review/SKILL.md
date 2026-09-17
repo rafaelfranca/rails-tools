@@ -41,6 +41,8 @@ Do not add an entry for these changes:
 - Documentation changes.
 - Refactors with no observable effect.
 - A minor compatibility fix with no meaningful user impact.
+- A fix for a bug that was introduced and fixed within the same unreleased
+  range, where the net behavior relative to the release tag is unchanged.
 
 Treat a follow-up fix as covered only when an existing entry explicitly describes the corrected behavior.
 
@@ -51,6 +53,17 @@ Treat a follow-up fix as covered only when an existing entry explicitly describe
 3. Describe the user result, not the implementation detail.
 4. Credit the original contributor, not the merger or backport author.
 5. Confirm the contributor name from the pull request or author profile when needed.
+   Resolve the name in this priority order:
+   a. If `main`'s changelog already credits this contributor for another entry,
+      match that spelling exactly.
+   b. Otherwise, use the git author name from the commit (`git log --format='%an'`).
+      If it is a full name (first + last), use it.
+   c. If the git author name is a handle, check the GitHub display name.
+      If it is a full name, use it.
+   d. If neither the git author name nor the GitHub display name is a full name,
+      use the GitHub handle.
+   e. For co-authored commits, read `Co-authored-by` trailers and credit
+      the human author(s). Do not credit bots unless no human co-author exists.
 6. Follow this format:
 
 ```markdown
